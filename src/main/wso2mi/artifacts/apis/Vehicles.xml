@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/vehicles" name="Vehicles" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" uri-template="/motorcycles">
+        <inSequence>
+            <payloadFactory media-type="json">
+                <format>{
+                    "motorcycles": [
+                    {"model": "Africa Twin", "year": "2023", "engine": "1084cc Parallel-Twin", "displacement": "1084", "category": "Adventure", "price": "14999"},
+                    {"model": "CB500X", "year": "2023", "engine": "471cc Parallel-Twin", "displacement": "471", "category": "Adventure", "price": "7199"},
+                    {"model": "CBR500R", "year": "2023", "engine": "471cc Parallel-Twin", "displacement": "471", "category": "Sport", "price": "7199"},
+                    {"model": "CB650R", "year": "2023", "engine": "649cc Inline-Four", "displacement": "649", "category": "Naked", "price": "9399"},
+                    {"model": "CBR650R", "year": "2023", "engine": "649cc Inline-Four", "displacement": "649", "category": "Sport", "price": "9899"},
+                    {"model": "Gold Wing", "year": "2023", "engine": "1833cc Flat-Six", "displacement": "1833", "category": "Touring", "price": "25499"},
+                    {"model": "Rebel 1100", "year": "2023", "engine": "1084cc Parallel-Twin", "displacement": "1084", "category": "Cruiser", "price": "10399"},
+                    {"model": "CRF450R", "year": "2023", "engine": "449cc Single-Cylinder", "displacement": "449", "category": "Off-Road", "price": "9599"},
+                    {"model": "Grom", "year": "2023", "engine": "125cc Single-Cylinder", "displacement": "125", "category": "Mini", "price": "3499"},
+                    {"model": "Monkey", "year": "2023", "engine": "125cc Single-Cylinder", "displacement": "125", "category": "Mini", "price": "4199"},
+                    {"model": "Super Cub C125", "year": "2023", "engine": "125cc Single-Cylinder", "displacement": "125", "category": "Scooter", "price": "3899"}
+                    ]
+                    }</format>
+                <args/>
+            </payloadFactory>
+            <log category="INFO" logMessageID="true" logFullPayload="true">
+                <message></message>
+            </log>
+            <respond/>
+        </inSequence>
+        <faultSequence>
+            <log level="custom">
+                <property name="ERROR" value="An error occurred in HondaMotorcycles API"/>
+            </log>
+            <payloadFactory media-type="json">
+                <format>{"error": "Internal server error occurred."}</format>
+                <args/>
+            </payloadFactory>
+            <respond/>
+        </faultSequence>
+    </resource>
+    <resource methods="GET" uri-template="/cars">
+         <inSequence>
+            <payloadFactory media-type="json">
+                <format>{
+                    "cars": [
+                    {"model": "Civic", "year": 2023, "trim": "Sport", "engine": "2.0L I4", "horsepower": 158, "fuel_economy": "30/37 mpg (city/highway)", "price": 27445, "body_type": "Sedan"},
+                    {"model": "Accord", "year": 2023, "trim": "EX", "engine": "1.5L Turbo I4", "horsepower": 192, "fuel_economy": "29/37 mpg (city/highway)", "price": 31950, "body_type": "Sedan"},
+                    {"model": "CR-V", "year": 2023, "trim": "EX", "engine": "1.5L Turbo I4", "horsepower": 190, "fuel_economy": "28/34 mpg (city/highway)", "price": 32950, "body_type": "SUV"},
+                    {"model": "Pilot", "year": 2023, "trim": "Touring", "engine": "3.5L V6", "horsepower": 280, "fuel_economy": "19/27 mpg (city/highway)", "price": 48450, "body_type": "SUV"},
+                    {"model": "Odyssey", "year": 2023, "trim": "Elite", "engine": "3.5L V6", "horsepower": 280, "fuel_economy": "19/28 mpg (city/highway)", "price": 49950, "body_type": "Minivan"},
+                    {"model": "Ridgeline", "year": 2023, "trim": "RTL-E", "engine": "3.5L V6", "horsepower": 280, "fuel_economy": "18/24 mpg (city/highway)", "price": 43950, "body_type": "Truck"},
+                    {"model": "HR-V", "year": 2023, "trim": "EX", "engine": "2.0L I4", "horsepower": 158, "fuel_economy": "26/32 mpg (city/highway)", "price": 26450, "body_type": "SUV"},
+                    {"model": "Clarity", "year": 2022, "trim": "Touring", "engine": "Electric", "horsepower": 181, "fuel_economy": "118 MPGe (combined)", "price": 47900, "body_type": "Sedan"}
+                    ]
+                    }</format>
+                <args/>
+            </payloadFactory>
+            <log category="INFO" logMessageID="true" logFullPayload="true">
+                <message></message>
+            </log>
+            <respond/>
+        </inSequence>
+        <faultSequence>
+            <log level="custom">
+                <property name="ERROR" value="An error occurred in HondaCars API"/>
+            </log>
+            <payloadFactory media-type="json">
+                <format>{"error": "Internal server error occurred."}</format>
+                <args/>
+            </payloadFactory>
+            <respond/>
+        </faultSequence>
+    </resource>
+</api>
